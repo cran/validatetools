@@ -1,7 +1,8 @@
-5f99c7fa0418a24fb9969b885743369e *DESCRIPTION
+112a75a1d4efe55c4b984fe2ad1667da *DESCRIPTION
 c18069a579159bcbe8762cf779c1702c *LICENSE
-07faaa239b51f6d23345eebdcd6f2718 *NAMESPACE
-41273c42c0ab5fa2647572de84b53a2a *R/categorical.R
+88e7003f02a5e2ab48722c3b297d0c16 *NAMESPACE
+9b17be33d5df676c63dae5d9e5d8bca3 *NEWS
+50ee1e37b8d62544a9cca993d01205e1 *R/categorical.R
 963fb12c9b94fea4f0aa0e576e1208f9 *R/conditional.R
 d78ef0bb5dd14d540c051e01e07a1e22 *R/contradicted.R
 b77763bae7ba0e7599ee287b61c65dc9 *R/detect_boundary.R
@@ -17,10 +18,9 @@ dff727d42e2fe8ca879e8e87d3fadd31 *R/dnf.R
 900f8641b58621629d769f32beb1c3ce *R/simplify_conditional.R
 68c031d7a56ac9d9c586c5d611f755f9 *R/simplify_rules.R
 778970d0e034533ff33833c707d3d1ed *R/soft-rule.R
-07ca5a74971a6ec4f3ff3ec13799bc39 *R/substitute_values.R
-02cd91d382f1e8d501b7b07f728038ed *R/utils.R
+3efdc0ccb945c944b4bcd00f0ca3b2f8 *R/substitute_values.R
+19f7535bc93006b1f57813f0ba5c441e *R/utils.R
 2cc749e44c192f995e544e492e33c059 *R/validatetools-package.R
-b3e68f2066007fce831a2fb0c1bb162e *README.md
 127d6cb9fcf4ca216eadbd4995f2b1cd *man/cat_as_mip_rules.Rd
 b307d4b174c5b0eb45eaa0348a0d8b41 *man/cat_coefficients.Rd
 f1beade3258d577f41f9f4e677b8a9bd *man/detect_boundary_cat.Rd
@@ -45,7 +45,7 @@ b7a0a4314e47a08e80f1dae691bd063b *man/substitute_values.Rd
 02c337e6dc917664797b631f56782d93 *man/translate_mip_lp.Rd
 b06fdd20eb96e0d6f50ee47b319ed226 *man/validatetools.Rd
 ef5bb4d035543d4df3311b79436a3aef *tests/testthat.R
-681600d683576fe2e6c04b142482b3dc *tests/testthat/test-categorical.R
+547da74f059bf935d450a0fe91e86321 *tests/testthat/test-categorical.R
 26840c46889011be71e0fbebc342759c *tests/testthat/test-conditional.R
 27d4b4a918a89e1a35eb027af93ddceb *tests/testthat/test-contradicted.R
 f225736aa800c49b845e7ff9e51c6806 *tests/testthat/test-detect_boundary.R
@@ -61,4 +61,4 @@ e684da3167a925e908806f221a221074 *tests/testthat/test-redundancy.R
 d1b492c4206febbf0873b723342c84f2 *tests/testthat/test-simplify_conditional.R
 405b83412c7f2fa73371b8d5e61f79d1 *tests/testthat/test-simplify_rules.R
 5d6da656c197bbe543a6986ad9d82ae6 *tests/testthat/test-soft-rule.R
-955f36d8bc6c90b1426e772365475488 *tests/testthat/test-substitute_values.R
+a63695d31ed1803729de3270d0e22f03 *tests/testthat/test-substitute_values.R
