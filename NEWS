@@ -1,3 +1,14 @@
+version 0.4.6
+- Fix for issue 11, Thanks to Ton de Waal: simplify_conditional was not working
+correctly on pure categorical rules
+- output of detect_boundary_cat has changed (improved)
+
+version 0.4.4
+- Negative coeficients in linear rules were ignored, now fixed
+
+version 0.4.3
+- Fixed issue #9, bug with pure categorical rules.
+
 version 0.4.2
 - Internal updates for compatability with 'validate' version 0.2.3.
 
