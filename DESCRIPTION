@@ -1,6 +1,6 @@
 Package: validatetools
 Title: Checking and Simplifying Validation Rule Sets
-Version: 0.4.6
+Version: 0.4.7
 Authors@R: c( person("Edwin", "de Jonge", email = "edwindjonge@gmail.com", role = c("aut", "cre")
             , comment=c(ORCID="0000-0002-6580-4718"))
             , person("Mark", "van der Loo", email = "mark.vanderloo@gmail.com",role = c("aut"))
@@ -19,10 +19,10 @@ Imports: methods, stats, utils, lpSolveAPI
 Suggests: testthat, covr
 RoxygenNote: 6.1.1
 NeedsCompilation: no
-Packaged: 2019-03-08 10:34:25 UTC; edwin
+Packaged: 2019-12-19 12:32:06 UTC; edwin
 Author: Edwin de Jonge [aut, cre] (<https://orcid.org/0000-0002-6580-4718>),
   Mark van der Loo [aut],
   Jacco Daalmans [ctb]
 Maintainer: Edwin de Jonge <edwindjonge@gmail.com>
 Repository: CRAN
-Date/Publication: 2019-03-08 11:50:03 UTC
+Date/Publication: 2019-12-19 12:50:02 UTC
