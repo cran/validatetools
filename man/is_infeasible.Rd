@@ -4,42 +4,55 @@
 \alias{is_infeasible}
 \title{Check the feasibility of a rule set}
 \usage{
-is_infeasible(x, ...)
+is_infeasible(x, ..., verbose = interactive())
 }
 \arguments{
 \item{x}{\code{validator} object with validation rules.}
 
 \item{...}{not used}
+
+\item{verbose}{if \code{TRUE} print information to the console}
 }
 \value{
 TRUE or FALSE
 }
 \description{
-An infeasible rule set cannot be satisfied by any data because of internal 
-contradictions. This function checks whether the record-wise linear,
+An infeasible rule set cannot be satisfied by any data because of internal
+contradictions: the combination of the rules make it inconsistent.
+This function checks whether the record-wise linear,
 categorical and conditional rules in a rule set are consistent.
+Note that is it wise to also check \code{detect_contradicting_if_rules()}:
+conditional If-rules
+may not be strictly inconsistent, but can be semantically inconsistent.
 }
 \examples{
 rules <- validator( x > 0)
 
 is_infeasible(rules)
 
+# infeasible system!
 rules <- validator( rule1 = x > 0
                   , rule2 = x < 0
                   )
 
 is_infeasible(rules)
 
-detect_infeasible_rules(rules)
-make_feasible(rules)
+detect_infeasible_rules(rules, verbose=TRUE)
 
-# find out the conflict with this rule
-is_contradicted_by(rules, "rule1")
+# but we want to keep rule1, so specify that it has an Inf weight
+detect_infeasible_rules(rules, weight=c(rule1=Inf), verbose=TRUE)
+
+# detect and remove
+make_feasible(rules, weight=c(rule1=Inf), verbose = TRUE)
+
+# find out the conflict with rule2
+is_contradicted_by(rules, "rule2", verbose = TRUE)
 }
 \seealso{
 Other feasibility: 
 \code{\link{detect_boundary_cat}()},
 \code{\link{detect_boundary_num}()},
+\code{\link{detect_contradicting_if_rules}()},
 \code{\link{detect_infeasible_rules}()},
 \code{\link{is_contradicted_by}()},
 \code{\link{make_feasible}()}

@@ -7,19 +7,28 @@
 simplify_conditional(x, ...)
 }
 \arguments{
-\item{x}{\code{\link{validator}} object with the validation rules.}
+\item{x}{\code{\link[validate:validator]{validate::validator()}} object with the validation rules.}
 
 \item{...}{not used.}
 }
 \value{
-\code{\link{validator}} simplified rule set.
+\code{\link[validate:validator]{validate::validator()}} simplified rule set.
 }
 \description{
-Conditional rules may be constrained by the others rules in a validation rule set.
+Conditional rules (if-rules) may be constrained by the others rules in a validation rule set.
 This procedure tries to simplify conditional statements.
 }
 \examples{
 library(validate)
+
+# superfluous conditions
+rules <- validator(
+  r1 = if (x > 0) x < 1,
+  r2 = if (y > 0 && y > 1) z > 0
+)
+# r1: x > 0 is superfluous because r1 equals (x <= 0) | (x < 1)
+# r2: y > 0 is superfluous because r2 equals (y <= 0) | (y <= 1) | (z > 0)
+simplify_conditional(rules)
 
 # non-relaxing clause
 rules <- validator( r1 = if (x > 1) y > 3

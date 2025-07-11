@@ -2,23 +2,25 @@
 % Please edit documentation in R/detect_boundary.R
 \name{detect_boundary_cat}
 \alias{detect_boundary_cat}
-\title{Detect viable domains for categorical variables}
+\title{Detect domains for categorical variables}
 \usage{
 detect_boundary_cat(x, ..., as_df = FALSE)
 }
 \arguments{
-\item{x}{\code{\link{validator}} object with rules}
+\item{x}{\code{\link[validate:validator]{validate::validator()}} object with rules}
 
 \item{...}{not used}
 
 \item{as_df}{return result as data.frame (before 0.4.5)}
 }
 \value{
-\code{data.frame} with columns \code{$variable}, \code{$value}, \code{$min}, \code{$max}. Each row is a 
+\code{data.frame} with columns \verb{$variable}, \verb{$value}, \verb{$min}, \verb{$max}. Each row is a
 category/value of a categorical variable.
 }
 \description{
-Detect viable domains for categorical variables
+Detect the allowed values for categorical variables: the rule set may constrain
+the categorical variables to a subset of their values.
+\code{detect_boundary_cat()} finds the categories that are allowed by the rule set.
 }
 \examples{
 rules <- validator(
@@ -40,6 +42,7 @@ detect_boundary_cat(rules)
 \seealso{
 Other feasibility: 
 \code{\link{detect_boundary_num}()},
+\code{\link{detect_contradicting_if_rules}()},
 \code{\link{detect_infeasible_rules}()},
 \code{\link{is_contradicted_by}()},
 \code{\link{is_infeasible}()},

@@ -4,18 +4,20 @@
 \alias{remove_redundancy}
 \title{Remove redundant rules}
 \usage{
-remove_redundancy(x, ...)
+remove_redundancy(x, ..., verbose = interactive())
 }
 \arguments{
-\item{x}{\code{\link{validator}} object with validation rules.}
+\item{x}{\code{\link[validate:validator]{validate::validator()}} object with validation rules.}
 
 \item{...}{not used}
+
+\item{verbose}{if \code{TRUE} print the remove rules to the console.}
 }
 \value{
-simplified \code{\link{validator}} object, in which redundant rules are removed.
+simplified \code{\link[validate:validator]{validate::validator()}} object, in which redundant rules are removed.
 }
 \description{
-Simplify a rule set by removing redundant rules
+Simplify a rule set by removing redundant rules, i.e. rules that are implied by other rules.
 }
 \examples{
 rules <- validator( rule1 = x > 1
@@ -23,17 +25,17 @@ rules <- validator( rule1 = x > 1
                   )
 
 # rule1 is superfluous
-remove_redundancy(rules)
+remove_redundancy(rules, verbose=TRUE)
 
 # rule 1 is implied by rule 2
-is_implied_by(rules, "rule1")
+is_implied_by(rules, "rule1", verbose=TRUE)
 
 rules <- validator( rule1 = x > 2
                   , rule2 = x > 2
 )
 
 # standout: rule1 and rule2, oldest rules wins
-remove_redundancy(rules)
+remove_redundancy(rules, verbose=TRUE)
 
 # Note that detection signifies both rules!
 detect_redundancy(rules)

@@ -2,17 +2,21 @@
 % Please edit documentation in R/redundancy.R
 \name{detect_redundancy}
 \alias{detect_redundancy}
-\title{Detect redundant rules without removing.}
+\title{Detect redundant rules}
 \usage{
-detect_redundancy(x, ...)
+detect_redundancy(x, ..., verbose = interactive())
 }
 \arguments{
-\item{x}{\code{\link{validator}} object with the validation rules.}
+\item{x}{\code{\link[validate:validator]{validate::validator()}} object with the validation rules.}
 
 \item{...}{not used.}
+
+\item{verbose}{if \code{TRUE} print the redundant rule(s) to the console}
 }
 \description{
-Detect redundancies in a rule set.
+Detect redundancies in a rule set, but do not remove the rules.
+A rule in a ruleset can be redundant if it is implied by another rule
+or by a combination of rules. See the examples for more information.
 }
 \note{
 For removal of duplicate rules, simplify
@@ -23,17 +27,17 @@ rules <- validator( rule1 = x > 1
                   )
 
 # rule1 is superfluous
-remove_redundancy(rules)
+remove_redundancy(rules, verbose=TRUE)
 
 # rule 1 is implied by rule 2
-is_implied_by(rules, "rule1")
+is_implied_by(rules, "rule1", verbose=TRUE)
 
 rules <- validator( rule1 = x > 2
                   , rule2 = x > 2
 )
 
 # standout: rule1 and rule2, oldest rules wins
-remove_redundancy(rules)
+remove_redundancy(rules, verbose=TRUE)
 
 # Note that detection signifies both rules!
 detect_redundancy(rules)

@@ -1,20 +1,21 @@
-#' Detect the range for numerical variables
+#' Detect the allowed range for numerical variables
 #' 
-#' Detect for each numerical variable in a validation rule set, what its maximum and minimum values are.
-#' This allows for manual rule set checking: does rule set \code{x} overly constrain numerical values?
+#' Detect for each numerical variable in a validation rule set, what its maximum and minimum allowed values are.
+#' The rule set may constrain numerical variables to a subset of their values.
+#' This allows for manual rule set checking: does rule set `x` overly constrain numerical values?
 #' 
 #' This procedure only finds minimum and maximum values, but misses gaps.
 #' 
-#' @seealso \code{\link{detect_fixed_variables}}
+#' @seealso [detect_fixed_variables()]
 #' @references Statistical Data Cleaning with R (2017), Chapter 8, M. van der Loo, E. de Jonge
 #' @references Simplifying constraints in data editing (2015). Technical Report 2015|18, Statistics Netherlands, J. Daalmans
 #' @example ./examples/detect_boundary.R
 #' @export
-#' @param x \code{\link{validator}} object, rule set to be checked
-#' @param eps detected fixed values will have this precission.
+#' @param x [validate::validator()] object, rule set to be checked
+#' @param eps detected fixed values will have this precision.
 #' @param ... currently not used
 #' @family feasibility
-#' @return \code{\link{data.frame}} with columns "variable", "lowerbound", "upperbound".
+#' @return [data.frame()] with columns "variable", "lowerbound", "upperbound".
 detect_boundary_num <- function(x, eps = 1e-8, ...){
   x <- check_validator(x)
   prec <- -log(eps, 10)
@@ -58,15 +59,17 @@ detect_boundary_num <- function(x, eps = 1e-8, ...){
 }
 
 
-#' Detect viable domains for categorical variables
+#' Detect domains for categorical variables
 #' 
-#' Detect viable domains for categorical variables
+#' Detect the allowed values for categorical variables: the rule set may constrain
+#' the categorical variables to a subset of their values.
+#' `detect_boundary_cat()` finds the categories that are allowed by the rule set.
 #' @example ./examples/detect_boundary.R
-#' @param x \code{\link{validator}} object with rules
+#' @param x [validate::validator()] object with rules
 #' @param as_df return result as data.frame (before 0.4.5)
 #' @param ... not used
 #' @family feasibility
-#' @return \code{data.frame} with columns \code{$variable}, \code{$value}, \code{$min}, \code{$max}. Each row is a 
+#' @return `data.frame` with columns `$variable`, `$value`, `$min`, `$max`. Each row is a 
 #' category/value of a categorical variable.
 #' @export
 detect_boundary_cat <- function(x, ..., as_df = FALSE){

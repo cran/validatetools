@@ -2,22 +2,26 @@
 % Please edit documentation in R/implied_by.R
 \name{is_implied_by}
 \alias{is_implied_by}
-\title{Find which rule(s) make rule_name redundant}
+\title{Find which rule(s) imply a rule}
 \usage{
-is_implied_by(x, rule_name, ...)
+is_implied_by(x, rule_name, ..., verbose = interactive())
 }
 \arguments{
-\item{x}{\code{\link{validator}} object with rule}
+\item{x}{\code{\link[validate:validator]{validate::validator()}} object with rule}
 
 \item{rule_name}{\code{character} with the names of the rules to be checked}
 
 \item{...}{not used}
+
+\item{verbose}{if \code{TRUE} print information to the console}
 }
 \value{
 \code{character} with the names of the rule that cause the implication.
 }
 \description{
 Find out which rules are causing rule_name(s) to be redundant.
+A rule set can contain rules that are implied by the other rules, so it is
+superfluous, see examples.
 }
 \examples{
 rules <- validator( rule1 = x > 1
@@ -25,17 +29,17 @@ rules <- validator( rule1 = x > 1
                   )
 
 # rule1 is superfluous
-remove_redundancy(rules)
+remove_redundancy(rules, verbose=TRUE)
 
 # rule 1 is implied by rule 2
-is_implied_by(rules, "rule1")
+is_implied_by(rules, "rule1", verbose=TRUE)
 
 rules <- validator( rule1 = x > 2
                   , rule2 = x > 2
 )
 
 # standout: rule1 and rule2, oldest rules wins
-remove_redundancy(rules)
+remove_redundancy(rules, verbose=TRUE)
 
 # Note that detection signifies both rules!
 detect_redundancy(rules)

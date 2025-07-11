@@ -1,10 +1,13 @@
 #TODO rename to mip_*
 
 # convert statements of A == '1' into A + .delta_A == '1'
+# convert statements of a:a - b:b <= 0 into a:a - b:b - delta <= 0
 soft_cat_rule <- function(x, prefix=".delta_", name = x$rule,  ...){
   stopifnot(inherits(x, "mip_rule"))
   nm <- paste0(prefix, name, collapse = "")
-  delta <- setNames(1L, nm)
+  neg <- min(sum(x$a[x$a < 0]), -1L)
+  delta <- ifelse(x$op == "==", 1L, neg)
+  delta <- setNames(delta, nm)
   x$a <- c(x$a, delta)
   x$type <- c(x$type, setNames("binary", nm))
   x
@@ -38,6 +41,7 @@ eps_min <- suffix("_eps_min")
 #' @param values named list of values.
 #' @param weights named numeric of equal length as values.
 #' @param ... not used
+#' @keywords internal
 expect_values <- function(values, weights, ...){
   if (missing(weights)){
     weights <- rep(1, length(values))

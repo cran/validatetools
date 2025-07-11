@@ -7,15 +7,16 @@
 detect_fixed_variables(x, eps = x$options("lin.eq.eps"), ...)
 }
 \arguments{
-\item{x}{\code{\link{validator}} object with the validation rules.}
+\item{x}{\code{\link[validate:validator]{validate::validator()}} object with the validation rules.}
 
 \item{eps}{detected fixed values will have this precission.}
 
 \item{...}{not used.}
 }
 \description{
-Detects variables that have a fixed value in the rule set. 
+Detects variables that are constrained by the rule set to have one fixed value.
 To simplify a rule set, these variables can be substituted with their value.
+See examples.
 }
 \examples{
 library(validate)
@@ -32,7 +33,7 @@ rules <- validator( x1 + x2 + x3 == 0
 simplify_fixed_variables(rules)
 }
 \seealso{
-\code{\link{simplify_fixed_variables}}
+\code{\link[=simplify_fixed_variables]{simplify_fixed_variables()}}
 
 Other redundancy: 
 \code{\link{detect_redundancy}()},

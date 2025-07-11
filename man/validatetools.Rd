@@ -2,13 +2,14 @@
 % Please edit documentation in R/validatetools-package.R
 \docType{package}
 \name{validatetools}
+\alias{validatetools-package}
 \alias{validatetools}
 \title{Tools for validation rules}
 \description{
 \code{validatetools} is a utility package for managing validation rule sets
-that are defined with \code{\link{validate}}. In production systems
+that are defined with \code{\link[validate:validate]{validate::validate()}}. In production systems
 validation rule sets tend to grow organically and accumulate redundant or
-(partially) contradictory rules. `validatetools` helps to identify problems
+(partially) contradictory rules. \code{validatetools} helps to identify problems
 with large rule sets and includes simplification methods for resolving
 issues.
 }
@@ -18,11 +19,15 @@ issues.
 The following methods allow for problem detection:
 
 \itemize{
-  \item \code{\link{is_infeasible}} checks a rule set for feasibility. An infeasible system must be corrected to be useful.
-  \item \code{\link{detect_boundary_num}} shows for each numerical variable the allowed range of values.
-  \item \code{\link{detect_boundary_cat}} shows for each categorical variable the allowed range of values.
-  \item \code{\link{detect_fixed_variables}} shows variables whose value is fixated by the rule set.
-  \item \code{\link{detect_redundancy}} shows which rules are already implied by other rules.
+\item \code{\link[=is_infeasible]{is_infeasible()}} checks a rule set for feasibility, i.e.
+if it contains contradicting rules making it infeasible. An infeasible system must be corrected to be useful, because
+it means that no record can satisfy all rules.
+\item \code{\link[=detect_infeasible_rules]{detect_infeasible_rules()}} detects which rules cause infeasibility.
+\item \code{\link[=detect_contradicting_if_rules]{detect_contradicting_if_rules()}} detects which \code{if} rules are conflicting.
+\item \code{\link[=detect_boundary_num]{detect_boundary_num()}} shows for each numerical variable the allowed range of values.
+\item \code{\link[=detect_boundary_cat]{detect_boundary_cat()}} shows for each categorical variable the allowed range of values.
+\item \code{\link[=detect_fixed_variables]{detect_fixed_variables()}} shows variables whose value is fixated by the rule set.
+\item \code{\link[=detect_redundancy]{detect_redundancy()}} shows which rules are already implied by other rules.
 }
 }
 
@@ -32,13 +37,35 @@ The following methods allow for problem detection:
 The following methods detect possible simplifications and apply them to a rule set.
 
 \itemize{
-  \item \code{\link{substitute_values}}: replace variables with constants. 
-  \item \code{\link{simplify_fixed_variables}}: substitute the fixed variables with their values in a rule set.
-  \item \code{\link{simplify_conditional}}: remove redundant (parts of) conditional rules.
-  \item \code{\link{remove_redundancy}}: remove redundant rules.
+\item \code{\link[=substitute_values]{substitute_values()}}: replace variables with constants.
+\item \code{\link[=simplify_fixed_variables]{simplify_fixed_variables()}}: substitute the fixed variables with their values in a rule set.
+\item \code{\link[=simplify_conditional]{simplify_conditional()}}: remove redundant (parts of) conditional rules.
+\item \code{\link[=remove_redundancy]{remove_redundancy()}}: remove redundant rules.
 }
 }
 
 \references{
 Statistical Data Cleaning with Applications in R, Mark van der Loo and Edwin de Jonge, ISBN: 978-1-118-89715-7
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/data-cleaning/validatetools}
+  \item Report bugs at \url{https://github.com/data-cleaning/validatetools/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Edwin de Jonge \email{edwindjonge@gmail.com} (\href{https://orcid.org/0000-0002-6580-4718}{ORCID})
+
+Authors:
+\itemize{
+  \item Mark van der Loo \email{mark.vanderloo@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Jacco Daalmans [contributor]
+}
+
 }
